@@ -29,15 +29,15 @@ context('Actions', () => {
 
           cy.visit('https://stg-magento2.mundipagg.com/customer/account/create', { timeout: 30000 });
 
-          cy.get("#firstname").type(user.firstName);
-          cy.get("#lastname").type(user.lastName);
-          cy.get("#taxvat").type(user.cpf);
-          cy.get("#lastname").type(user.lastName);
-          cy.get("#email_address").type(user.email);
-          cy.get("#password").type(user.password);
-          cy.get("#password-confirmation").type(user.password);
-          cy.get('.actions-toolbar').within(() => {
-            cy.get("button[title='Create an Account']").click();
+          cy.get("#firstname", { timeout: 30000 }).type(user.firstName);
+          cy.get("#lastname", { timeout: 30000 }).type(user.lastName);
+          cy.get("#taxvat", { timeout: 30000 }).type(user.cpf);
+          cy.get("#lastname", { timeout: 30000 }).type(user.lastName);
+          cy.get("#email_address", { timeout: 30000 }).type(user.email);
+          cy.get("#password", { timeout: 30000 }).type(user.password);
+          cy.get("#password-confirmation", { timeout: 30000 }).type(user.password);
+          cy.get('.actions-toolbar', { timeout: 30000 }).within(() => {
+            cy.get("button[title='Create an Account']", { timeout: 30000 }).click();
           });
 
           cy.get('.block-title').within(() => {
