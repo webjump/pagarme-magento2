@@ -11,7 +11,7 @@ context('Actions', () => {
     cy.get("button#product-addtocart-button").click();
 
     cy.wait(5000);
-    cy.visit("checkout");
+    cy.visit("https://stg-magento2.mundipagg.com/checkout");
 
     cy.wait(10000);
     cy.get('.cart-price').within(() => {
