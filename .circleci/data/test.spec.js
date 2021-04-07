@@ -17,7 +17,7 @@ context('Actions', () => {
         cy.contains('.price',"R$45,00")
     });*/
 
-    Cypress._.times(200,() => {
+    Cypress._.times(500,() => {
         it('should register a new user', () => {
           const user = {
               firstName: "Test",
@@ -27,17 +27,18 @@ context('Actions', () => {
               password: Math.random().toString(36)
           }
 
-          cy.visit('https://stg-magento2.mundipagg.com/customer/account/create', { timeout: 60000 });
+          cy.visit('https://stg-magento2.mundipagg.com/customer/account/create');
 
-          cy.get("#firstname", { timeout: 60000 }).type(user.firstName);
-          cy.get("#lastname", { timeout: 60000 }).type(user.lastName);
-          cy.get("#taxvat", { timeout: 60000 }).type(user.cpf);
-          cy.get("#lastname", { timeout: 60000 }).type(user.lastName);
-          cy.get("#email_address", { timeout: 60000 }).type(user.email);
-          cy.get("#password", { timeout: 60000 }).type(user.password);
-          cy.get("#password-confirmation", { timeout: 60000 }).type(user.password);
-          cy.get('.actions-toolbar', { timeout: 60000 }).within(() => {
-            cy.get("button[title='Create an Account']", { timeout: 60000 }).click();
+          cy.wait(5000);
+          cy.get("#firstname").type(user.firstName);
+          cy.get("#lastname").type(user.lastName);
+          cy.get("#taxvat").type(user.cpf);
+          cy.get("#lastname").type(user.lastName);
+          cy.get("#email_address").type(user.email);
+          cy.get("#password").type(user.password);
+          cy.get("#password-confirmation").type(user.password);
+          cy.get('.actions-toolbar').within(() => {
+            cy.get("button[title='Create an Account']").click();
           });
 
           cy.get('.block-title').within(() => {
