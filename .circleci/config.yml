@@ -19,6 +19,9 @@ jobs:
             nvm install --lts
             source ~/.bashrc
             npm install cypress --save-dev
+            touch /app/cypress.json
+            echo "{}" >> cypress.json
+            mkdir /app/cypress
             mkdir /app/cypress/integration
             cp /app/.circleci/data/test.spec.js /app/cypress/integration
             ./node_modules/.bin/cypress run --spec cypress/integration/test.spec.js
