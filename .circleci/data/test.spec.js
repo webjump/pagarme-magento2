@@ -2,9 +2,8 @@
 
 context('Actions', () => {
 
-  Cypress._.times(1,() => {
+  Cypress._.times(100,() => {
   it('should add something to cart', () => {
-    // https://on.cypress.io/type
     cy.visit('https://stg-magento2.mundipagg.com/push-it-messenger-bag.html');
 
     cy.wait(5000);
