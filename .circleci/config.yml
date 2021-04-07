@@ -12,15 +12,15 @@ jobs:
           name: Install system packages
           command: apt-get update && apt-get -y install zip git zlib1g-dev wget libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
        - run:
-          name: Install NodeJS and NPM
+          name: Install NodeJS/NPM and run cypress simple test
           command: |
             wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
             source ~/.bashrc
             nvm install --lts
             source ~/.bashrc
             npm install cypress --save-dev
-            mkdir cypress/integration
-            cp /app/.circleci/data/test.spec.js cypress/integration
+            mkdir /app/cypress/integration
+            cp /app/.circleci/data/test.spec.js /app/cypress/integration
             ./node_modules/.bin/cypress run --spec cypress/integration/test.spec.js
        - run:
           name: Install PHP extensions
