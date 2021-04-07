@@ -28,6 +28,8 @@ context('Actions', () => {
           }
 
           cy.visit('https://stg-magento2.mundipagg.com/customer/account/create');
+
+          cy.wait(5000);
           cy.get("#firstname").type(user.firstName);
           cy.get("#lastname").type(user.lastName);
           cy.get("#taxvat").type(user.cpf);
