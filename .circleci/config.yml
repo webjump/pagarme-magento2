@@ -18,7 +18,10 @@ jobs:
             source ~/.bashrc
             nvm install --lts
             source ~/.bashrc
-            npm install cypress --save-dev && ./node_modules/.bin/cypress run --spec .circleci/data/test.spec.js
+            npm install cypress --save-dev
+            mkdir cypress/integration
+            cp /app/.circleci/data/test.spec.js cypress/integration
+            ./node_modules/.bin/cypress run --spec cypress/integration/test.spec.js
        - run:
           name: Install PHP extensions
           command: |
