@@ -17,7 +17,7 @@ context('Actions', () => {
         cy.contains('.price',"R$45,00")
     });*/
 
-    Cypress._.times(100,() => {
+    Cypress._.times(200,() => {
         it('should register a new user', () => {
           const user = {
               firstName: "Test",
@@ -27,9 +27,8 @@ context('Actions', () => {
               password: Math.random().toString(36)
           }
 
-          cy.visit('https://stg-magento2.mundipagg.com/customer/account/create');
+          cy.visit('https://stg-magento2.mundipagg.com/customer/account/create', { timeout: 30000 });
 
-          cy.wait(5000);
           cy.get("#firstname").type(user.firstName);
           cy.get("#lastname").type(user.lastName);
           cy.get("#taxvat").type(user.cpf);
