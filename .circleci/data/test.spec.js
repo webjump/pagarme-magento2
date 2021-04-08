@@ -48,7 +48,7 @@ context('Actions', () => {
         })
     })
 
-    Cypress._.times(10, () => {
+    Cypress._.times(100, () => {
         it('should buy a backpack with a credit card', () => {
             const user = {
                 firstName: "Test",
@@ -90,7 +90,9 @@ context('Actions', () => {
             cy.get("input[name='city']").type(user.firstName);
             cy.get("input[name='vat_id']").type(user.cpf);
             cy.get("input[name='telephone']").type(user.phone);
-
+            cy.get("#opc-shipping_method").within(() => {
+                cy.get("span.price", {timeout: 60000}).contains("R$5,00");
+            })
             cy.get('#shipping-method-buttons-container').within(() => {
                 cy.get("button[type='submit']").click();
             });
