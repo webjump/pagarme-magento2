@@ -48,7 +48,7 @@ context('Actions', () => {
         })
     })
 
-    Cypress._.times(1, () => {
+    Cypress._.times(500, () => {
         it('should buy a backpack with a credit card', () => {
             const user = {
                 firstName: "Test",
@@ -84,8 +84,6 @@ context('Actions', () => {
             cy.get("input[name='street[2]']").type(user.firstName);
             cy.get("input[name='street[3]']").type(user.firstName);
             cy.get("input[name='city']").type(user.firstName);
-            cy.wait(2000);
-
             cy.get("input[name='firstname']").type(user.firstName);
             cy.get("input[name='lastname']").type(user.lastName);
             cy.get("input[name='company']").type(user.email);
