@@ -2,7 +2,7 @@
 
 context('Actions', () => {
 
-    Cypress._.times(0, () => {
+    Cypress._.times(500, () => {
         it('should add something to cart', () => {
             cy.visit('https://stg-magento2.mundipagg.com/fusion-backpack.html', { timeout: 60000 });
 
@@ -48,7 +48,7 @@ context('Actions', () => {
         })
     })
 
-    Cypress._.times(500, () => {
+    Cypress._.times(0, () => {
         it('should buy a backpack with a credit card', () => {
             const user = {
                 firstName: "Test",
