@@ -17,7 +17,7 @@ context('Actions', () => {
         cy.contains('.price',"R$45,00")
     });*/
 
-    Cypress._.times(100,() => {
+    Cypress._.times(200,() => {
         it('should register a new user', () => {
           const user = {
               firstName: "Test",
@@ -41,7 +41,8 @@ context('Actions', () => {
           });
 
           cy.get('.block-title').within(() => {
-            cy.contains('strong',"Account Information")
+            cy.contains('strong',"Account Information");
+            cy.visit('https://stg-magento2.mundipagg.com/customer/account/logout', {timeout: 60000});
           });
 
 
