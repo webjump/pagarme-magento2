@@ -75,13 +75,7 @@ context('Actions', () => {
 
 
             cy.get("select[name='country_id']", { timeout: 60000 }).select("Brasil");
-
             cy.get("#customer-email").type(user.email);
-            cy.get("input[name='firstname']").type(user.firstName);
-            cy.get("input[name='lastname']").type(user.lastName);
-            cy.get("input[name='company']").type(user.email);
-            cy.get("input[name='city']").type(user.firstName);
-            cy.get("input[name='vat_id']").type(user.cpf);
             cy.get("input[name='telephone']").type(user.phone);
             cy.get("input[name='postcode']").type(user.cep);
             cy.get("select[name='region_id']").select("Acre");
@@ -89,9 +83,15 @@ context('Actions', () => {
             cy.get("input[name='street[1]']").type(user.firstName);
             cy.get("input[name='street[2]']").type(user.firstName);
             cy.get("input[name='street[3]']").type(user.firstName);
+            cy.get("input[name='city']").type(user.firstName);
+            cy.wait(2000);
+
+            cy.get("input[name='firstname']").type(user.firstName);
+            cy.get("input[name='lastname']").type(user.lastName);
+            cy.get("input[name='company']").type(user.email);
+            cy.get("input[name='vat_id']").type(user.cpf);
 
             cy.get('#shipping-method-buttons-container').within(() => {
-                cy.wait(2000);
                 cy.get("button[type='submit']", {timeout: 60000}).click();
             });
 
