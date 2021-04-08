@@ -48,7 +48,7 @@ context('Actions', () => {
         })
     })
 
-    Cypress._.times(100, () => {
+    Cypress._.times(10, () => {
         it('should buy a backpack with a credit card', () => {
             const user = {
                 firstName: "Test",
