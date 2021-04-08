@@ -17,7 +17,7 @@ context('Actions', () => {
         cy.contains('.price',"R$45,00")
     });*/
 
-    Cypress._.times(200,() => {
+    Cypress._.times(500,() => {
         it('should register a new user', () => {
           const user = {
               firstName: "Test",
