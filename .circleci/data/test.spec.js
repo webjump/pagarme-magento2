@@ -91,6 +91,7 @@ context('Actions', () => {
             cy.get("input[name='street[3]']").type(user.firstName);
 
             cy.get('#shipping-method-buttons-container').within(() => {
+                cy.wait(2000);
                 cy.get("button[type='submit']", {timeout: 60000}).click();
             });
 
