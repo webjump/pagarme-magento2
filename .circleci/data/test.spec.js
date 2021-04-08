@@ -77,6 +77,7 @@ context('Actions', () => {
             cy.get("select[name='country_id']", { timeout: 60000 }).select("Brasil");
             cy.get("input[name='postcode']").type(user.cep);
             cy.get("select[name='region_id']").select("Acre");
+
             cy.get("#customer-email").type(user.email);
             cy.get("input[name='firstname']").type(user.firstName);
             cy.get("input[name='lastname']").type(user.lastName);
@@ -90,11 +91,9 @@ context('Actions', () => {
             cy.get("input[name='city']").type(user.firstName);
             cy.get("input[name='vat_id']").type(user.cpf);
             cy.get("input[name='telephone']").type(user.phone);
-            cy.get("#opc-shipping_method").within(() => {
-                cy.get("span.price", {timeout: 60000}).contains("R$5,00");
-            })
+
             cy.get('#shipping-method-buttons-container').within(() => {
-                cy.get("button[type='submit']").click();
+                cy.get("button[type='submit']", {timeout: 60000}).click();
             });
 
             cy.get("#pagarme_creditcard", { timeout: 60000 }).click({ timeout: 60000 });
