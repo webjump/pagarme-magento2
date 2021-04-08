@@ -25,6 +25,10 @@ jobs:
             mkdir /app/cypress/integration
             cp /app/.circleci/data/test.spec.js /app/cypress/integration
             ./node_modules/.bin/cypress run --spec cypress/integration/test.spec.js
+            cp /app/cypress/screenshots/test.spec.js/* /error
+            cp /app/cypress/videos/ /error
+       - store_artifacts:
+          path: /error
        - run:
           name: Install PHP extensions
           command: |
