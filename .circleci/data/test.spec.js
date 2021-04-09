@@ -2,7 +2,7 @@
 
 context('Actions', () => {
 
-    Cypress._.times(200, () => {
+    Cypress._.times(500, () => {
         it('should add something to cart', () => {
             cy.visit('https://stg-magento2.mundipagg.com/fusion-backpack.html', { timeout: 60000 });
 
