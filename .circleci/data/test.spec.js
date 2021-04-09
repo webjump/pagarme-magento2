@@ -13,7 +13,7 @@ context('Actions', () => {
             cy.visit("https://stg-magento2.mundipagg.com/checkout");
 
             cy.get('.cart-price', {timeout: 60000}).within(() => {
-                cy.contains('.price', "R$59,00")
+                cy.contains('.price', "R$59,00", { timeout: 60000 });
             });
         })
     });
