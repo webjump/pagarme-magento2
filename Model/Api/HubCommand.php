@@ -3,12 +3,12 @@
 namespace Pagarme\Pagarme\Model\Api;
 
 use Magento\Framework\Webapi\Rest\Request;
+use Magento\Framework\Webapi\Exception as MagentoException;
 use Magento\Framework\App\ObjectManager;
-use \Magento\Framework\App\Config\Storage\WriterInterface;
-use \Magento\Framework\App\Cache\Manager;
+use Magento\Framework\App\Config\Storage\WriterInterface;
+use Magento\Framework\App\Cache\Manager;
 use Pagarme\Pagarme\Api\HubCommandInterface;
 use Pagarme\Pagarme\Concrete\Magento2CoreSetup;
-
 use Pagarme\Core\Hub\Services\HubIntegrationService;
 
 class HubCommand implements HubCommandInterface
@@ -47,12 +47,25 @@ class HubCommand implements HubCommandInterface
         );
 
         $hubCommandFactory = new HubIntegrationService();
-        $hubCommandFactory->executeCommandFromPost($params);
+        try {
+            $hubCommandFactory->executeCommandFromPost($params);
+        } catch (\Exception $e) {
+            throw new MagentoException(
+                __($e->getMessage()),
+                0,
+                400
+            );
+        }
 
         $command = strtolower($params->command) . 'Command';
-        $commandResponse = $this->$command();
 
-        return $commandResponse;
+        if (method_exists($this, $command)) {
+            $commandMessage = $this->$command();
+        } else {
+            $commandMessage = "Command $params->command executed successfully";
+        }
+
+        return new $commandMessage;
     }
 
     public function uninstallCommand()
@@ -80,9 +93,6 @@ class HubCommand implements HubCommandInterface
 
         $this->cacheManager->clean(['config']);
 
-        return [
-            'code' => 200,
-            'message' => "Hub uninstalled successfully"
-        ];
+        return "Hub uninstalled successfully";
     }
 }
