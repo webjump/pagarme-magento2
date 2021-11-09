@@ -531,7 +531,7 @@ final class Magento2CoreSetup extends AbstractModuleCoreSetup
         }
 
         if ($config->getScope() == 'default') {
-            $store = $storeManager->getDefaultStoreView()->getStoreId();
+            $store = $storeManager->getDefaultStoreView()->getWebsiteId();
         }
 
         return $store;
