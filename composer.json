@@ -1,5 +1,5 @@
 {
-    "name": "pagarme/pagarme-magento2-module",
+    "name": "webjump/pagarme-magento2-module",
     "license": "MIT",
     "version": "1.1.5",
     "type": "magento2-module",
